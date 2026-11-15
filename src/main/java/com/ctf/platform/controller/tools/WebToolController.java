@@ -54,4 +54,31 @@ public class WebToolController {
         Map<String, String> replacements = (Map<String, String>) body.get("replacements");
         return ResponseEntity.ok(webEngineService.encodePayload(raw, encoding, replacements));
     }
+
+    @PostMapping("/headers/audit")
+    public ResponseEntity<Map<String, Object>> auditHeaders(@RequestBody Map<String, String> body) {
+        String rawHeaders = body.getOrDefault("headers", body.getOrDefault("raw", ""));
+        return ResponseEntity.ok(webEngineService.auditHeaders(rawHeaders));
+    }
+
+    @PostMapping("/bypass/transform")
+    public ResponseEntity<Map<String, Object>> transformFilterBypass(@RequestBody Map<String, Object> body) {
+        String payload = (String) body.getOrDefault("payload", "");
+        String type = (String) body.getOrDefault("type", "sqli");
+        @SuppressWarnings("unchecked")
+        List<String> techniques = (List<String>) body.get("techniques");
+        return ResponseEntity.ok(webEngineService.transformFilterBypass(payload, type, techniques));
+    }
+
+    @PostMapping("/ua/parse")
+    public ResponseEntity<Map<String, Object>> parseUserAgent(@RequestBody Map<String, String> body) {
+        String ua = body.getOrDefault("userAgent", body.getOrDefault("ua", ""));
+        return ResponseEntity.ok(webEngineService.parseUserAgent(ua));
+    }
+
+    @PostMapping("/url/decompose")
+    public ResponseEntity<Map<String, Object>> decomposeUrl(@RequestBody Map<String, String> body) {
+        String url = body.getOrDefault("url", body.getOrDefault("input", ""));
+        return ResponseEntity.ok(webEngineService.decomposeUrl(url));
+    }
 }
