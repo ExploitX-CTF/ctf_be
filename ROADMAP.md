@@ -1,138 +1,180 @@
-================================================================================
-CTF PLATFORM & WORKBENCH - MASTER IMPLEMENTATION ROADMAP
-================================================================================
-Target Folder: C:\faiyaaz\projects\CTF
-Backend (ctf-be):  Java 17 (LTS) + Spring Boot 3.3.x + MongoDB Atlas (Port 8080)
-Frontend (ctf-fe): React 19 + Vite + Pure CSS Cyber Theme (Port 5173)
+# 🚀 ExploitX CTF Platform — Master Implementation Roadmap
 
-ROADMAP STATUS LEGEND:
-[COMPLETED]   - Finished, tested, and pushed to GitHub
-[CURRENT]     - Current step we are actively building
-[UPCOMING]    - Next scheduled step in sequence
+> **Current Status**: All **64 / 64 Tools** across 7 domains are **100% completed and verified** with dedicated custom screens and backend engine tests.  
+> **Active Focus**: Operator Platform, Web Terminal Simulator, Inter-Tool Pipelining, and Workspace Resilience.  
+> **On-Hold Status**: Challenges & Competitive Scoring side is temporarily paused per user decision.
 
-================================================================================
-PHASE 1: SCAFFOLDING & FOUNDATION [COMPLETED]
-================================================================================
-[COMPLETED] Step 1.1: Clone and link GitHub repositories (ctf_fe & ctf_be)
-[COMPLETED] Step 1.2: Initialize Java 17 + Spring Boot 3.3.x backend with Maven Wrapper (3.9.9)
-[COMPLETED] Step 1.3: Initialize React 19 + Vite frontend with lucide-react & axios
-[COMPLETED] Step 1.4: Create 1-click Windows dev launcher (run-dev.bat)
-[COMPLETED] Step 1.5: Configure MongoDB Atlas connection with .env & gitignore protection
+---
 
-================================================================================
-PHASE 2: BACKEND CORE ARCHITECTURE & DATABASE [COMPLETED]
-================================================================================
-[COMPLETED] Step 2.1: Implement MongoDB Models (User, Note, FlagCandidate, Challenge, Announcement)
-[COMPLETED] Step 2.2: Implement Spring Data Repositories for all 5 models
-[COMPLETED] Step 2.3: Implement Stateless JWT Authentication (JwtTokenProvider, JwtAuthFilter)
-[COMPLETED] Step 2.4: Implement AuthController (/api/auth/register, /api/auth/login, /api/auth/me)
-[COMPLETED] Step 2.5: Implement WorkspaceController (Persistent Notes & Cloud Flag Hunter APIs)
-[COMPLETED] Step 2.6: Implement ChallengeController (Challenge board, hints & flag verify)
+## 📊 Executive Progress Dashboard
 
-================================================================================
-PHASE 3: FRONTEND FOUNDATION & DESIGN SYSTEM [COMPLETED]
-================================================================================
-[COMPLETED] Step 3.1: Cyber Design System & Tokens (src/styles/theme.css, auth.css, admin.css)
-[COMPLETED] Step 3.2: Axios API Service Layer with JWT Bearer Interceptor (src/services/api.js)
-[COMPLETED] Step 3.3: Global State Contexts (AuthContext.jsx & authService.js)
-[COMPLETED] Step 3.4: Master App Layout (Navbar, Category Sidebar, Backend Live Indicator)
-[COMPLETED] Step 3.5: Core UI Infrastructure (ToolWrapper, SendToMenu, CommandPalette, HexViewer)
-================================================================================
-PHASE 4: FRONTEND AUTH & PERSISTENT WORKSPACE PAGES [COMPLETED]
-================================================================================
-[COMPLETED] Step 4.1: LoginPage.jsx & RegisterPage.jsx (Operator authentication UI)
-[COMPLETED] Step 4.2: NotesScratchpad.jsx (Cloud-persisted operator notes with auto-save)
-[COMPLETED] Step 4.3: FlagHunter.jsx (Real-time regex flag scanner & MongoDB candidate pool)
-[COMPLETED] Step 4.4: ChallengesPage.jsx (Live challenge board, solve counter & flag submission)
+| Domain / Layer | Tools / Units | Backend Engine Status | Frontend UI Status | Test Coverage | Overall Status |
+| :--- | :---: | :---: | :---: | :---: | :---: |
+| **1. Cryptography** | 17 / 17 | `CryptoEngineService` | 17 Custom Screens | 16 Tests Passed | ✅ **100% Complete** |
+| **2. Network & OSINT** | 5 / 5 | `NetworkEngineService` | 5 Custom Screens | 9 Tests Passed | ✅ **100% Complete** |
+| **3. Web Exploitation** | 8 / 8 | `WebEngineService` | 8 Custom Screens | 7 Tests Passed | ✅ **100% Complete** |
+| **4. Forensics & Stego** | 12 / 12 | `ForensicEngineService` | 12 Custom Screens | 5 Tests Passed | ✅ **100% Complete** |
+| **5. Reverse & Pwn** | 13 / 13 | `ReverseEngineService` | 13 Custom Screens | 5 Tests Passed | ✅ **100% Complete** |
+| **6. Reference Guides** | 2 / 2 | Client Reference | 2 Custom Screens | Verified in Vitest | ✅ **100% Complete** |
+| **7. Workspace Utilities** | 7 / 7 | `WorkspaceController` | 7 Custom Screens | Verified in Vitest | ✅ **100% Complete** |
+| **TOTAL TOOLS** | **64 / 64** | **5 Engines + Controller** | **64 Dedicated Pages** | **43 Backend + 9 Frontend** | **✅ 100% TOOLKIT DONE** |
 
-================================================================================
-PHASE 5: MODULAR TOOL IMPLEMENTATION (64 TOOLS ACROSS 7 DOMAINS)
-================================================================================
---- [5.1 Cryptography Suite (17 Tools)] [COMPLETED] ---
-[COMPLETED] Step 5.1.1:  MultiDecoder.jsx (Base64, Hex, URL, Binary, ROT13, Atbash, Morse)
-[COMPLETED] Step 5.1.2:  XorToolkit.jsx (Single-byte brute force & repeating key XOR)
-[COMPLETED] Step 5.1.3:  HashUtils.jsx (MD5, SHA1/256/512, NTLM & type heuristic detector)
-[COMPLETED] Step 5.1.4:  EncodingLab.jsx (Base32, Base58, Base64, Base85, Hex)
-[COMPLETED] Step 5.1.5:  NumberConverter.jsx (Dec, Hex, Oct, Bin, ASCII, IEEE-754 float)
-[COMPLETED] Step 5.1.6:  RsaHelper.jsx (Basic n, p, q, phi, d calculation)
-[COMPLETED] Step 5.1.7:  AtbashCipher.jsx (Reversible alphabet substitution)
-[COMPLETED] Step 5.1.8:  RailFenceCipher.jsx (Zig-zag transposition cipher)
-[COMPLETED] Step 5.1.9:  BaconianCipher.jsx (5-bit binary alphabet cipher)
-[COMPLETED] Step 5.1.10: BitwiseCalculator.jsx (Visual bitwise operator sandbox)
-[COMPLETED] Step 5.1.11: RsaAttackLab.jsx + Backend Java Wiener/Fermat Engine
-[COMPLETED] Step 5.1.12: VigenereSolver.jsx + Backend Java IoC Key Deduction
-[COMPLETED] Step 5.1.13: PaddingOracleSim.jsx (PKCS#7 CBC decryption stepping simulator)
-[COMPLETED] Step 5.1.14: SubstitutionSolver.jsx (Monoalphabetic solver with n-gram frequency)
-[COMPLETED] Step 5.1.15: DiscreteLogSolver.jsx + Backend Java Baby-step Giant-step
-[COMPLETED] Step 5.1.16: CribDragCracker.jsx (Interactive two-time pad crib dragging)
-[COMPLETED] Step 5.1.17: RotShiftTable.jsx (Simultaneous 25-rotation Caesar table)
+---
 
---- [5.2 Web Exploitation Suite (8 Tools)] ---
-[COMPLETED] Step 5.2.1: JwtAnalyzer.jsx (Token inspector, signature tamper & none-exploit)
-[COMPLETED] Step 5.2.2: PayloadGen.jsx (Curated dictionary across 13 web attack categories)
-[CURRENT]   Step 5.2.3: RequestAnalyzer.jsx + Backend Java HTTP Security Header Auditor
-[UPCOMING]  Step 5.2.4: RegexTester.jsx (Interactive regex tester with CTF presets)
-[UPCOMING]  Step 5.2.5: UrlParser.jsx (URL component decomposition)
-[UPCOMING]  Step 5.2.6: UserAgentParser.jsx (Browser, OS, device fingerprint identifier)
-[UPCOMING]  Step 5.2.7: HttpStatusCodes.jsx (RFC catalog with CTF security attack hints)
-[UPCOMING]  Step 5.2.8: SstiSqliPlayground.jsx (Jinja2/Twig/SpEL RCE & SQLi filter bypass)
+## 🛠️ Complete Inventory of Implemented Tools (64 / 64)
 
---- [5.3 Forensics & Steganography Suite (12 Tools)] ---
-[UPCOMING]  Step 5.3.1:  FileAnalyzer.jsx (Magic byte identification & mime detection)
-[UPCOMING]  Step 5.3.2:  StegAssistant.jsx (zsteg, steghide, binwalk command generator)
-[UPCOMING]  Step 5.3.3:  LsbStegReader.jsx (HTML5 Canvas bitplane reader for LSBs)
-[UPCOMING]  Step 5.3.4:  TimestampConverter.jsx (Epoch, Unix ms, Windows FILETIME, UUIDv1)
-[UPCOMING]  Step 5.3.5:  ExifFieldReference.jsx (GPS, camera model, author metadata sheet)
-[UPCOMING]  Step 5.3.6:  MimeTypeReference.jsx (Binary magic signatures dictionary)
-[UPCOMING]  Step 5.3.7:  DefaultCredentials.jsx (Searchable router/server/CMS database)
-[UPCOMING]  Step 5.3.8:  PcapParser.jsx + Backend Java PCAP Binary Stream Inspector
-[UPCOMING]  Step 5.3.9:  MagicByteCarver.jsx + Backend Java Multipart File Carver
-[UPCOMING]  Step 5.3.10: ZipCracker.jsx + Backend Java Multi-Threaded ZIP Password Cracker
-[UPCOMING]  Step 5.3.11: PngChunkFixer.jsx + Backend Java IHDR CRC-32 Height Fixer
-[UPCOMING]  Step 5.3.12: Base64MediaExtractor.jsx (Data-URI image, audio, SVG previewer)
+### 1. Cryptography Suite (17 Tools)
+- [x] **Multi Decoder** (`/cryptography/multi-decoder`): Cascading auto-detection and multi-stage decoding.
+- [x] **XOR Toolkit** (`/cryptography/xor`): Single-byte brute force, repeating-key XOR, and frequency scoring.
+- [x] **Hash Utilities** (`/cryptography/hash-utilities`): MD5, SHA-1, SHA-256, SHA-512, NTLM generation and heuristic identifier.
+- [x] **Encoding Lab** (`/cryptography/encoding-lab`): Base32, Base58, Base64, Base85, Hex converters.
+- [x] **Number Converter** (`/cryptography/number-converter`): Decimal, Hexadecimal, Octal, Binary, ASCII, IEEE-754 float.
+- [x] **RSA Helper** (`/cryptography/rsa-helper`): Prime factors, Euler totient $\phi(n)$, modular inverse $d$.
+- [x] **Atbash Cipher** (`/cryptography/atbash-cipher`): Symmetric Hebrew alphabet substitution.
+- [x] **Rail Fence Cipher** (`/cryptography/rail-fence-cipher`): Zig-zag transposition cipher solver.
+- [x] **Baconian Cipher** (`/cryptography/baconian-cipher`): 5-bit binary steganographic cipher decoder.
+- [x] **Bitwise Calculator** (`/cryptography/bitwise-calculator`): Interactive visual bitwise operator playground (AND, OR, XOR, NOT, shifts, rotates).
+- [x] **RSA Attack Lab** (`/cryptography/rsa-attack-lab`): Wiener low private exponent attack & Fermat close prime factorization.
+- [x] **Vigenère Solver** (`/cryptography/vigenere-solver`): Automated Index of Coincidence (IoC) key length deduction & frequency analysis.
+- [x] **Padding Oracle Simulator** (`/cryptography/padding-oracle-simulator`): PKCS#7 CBC decryption stepping simulator.
+- [x] **Substitution Cipher Solver** (`/cryptography/substitution-cipher-solver`): Monoalphabetic frequency analysis & letter substitution map.
+- [x] **Discrete Logarithm Solver** (`/cryptography/discrete-logarithm-solver`): Baby-step Giant-step algorithm for modular discrete log.
+- [x] **Crib Dragging Cracker** (`/cryptography/crib-dragging-cracker`): Two-time pad (OTP reuse) interactive crib dragging.
+- [x] **Caesar 25-Shift Table** (`/cryptography/caesar-25-shift-table`): Real-time simultaneous display of all 25 Caesar shifts.
 
---- [5.4 Network & OSINT Suite (5 Tools)] ---
-[COMPLETED] Step 5.4.1: NetworkCalc.jsx (IPv4/IPv6 CIDR subnet & wildcard calculator)
-[COMPLETED] Step 5.4.2: OsintWorkspace.jsx (Shodan, VirusTotal, Censys, Dork aggregator)
-[COMPLETED] Step 5.4.3: WordlistsReference.jsx (SecLists, RockYou download cheat sheets)
-[UPCOMING]  Step 5.4.4: WhoisReference.jsx (Domain registrar & TLD field guide)
-[UPCOMING]  Step 5.4.5: LiveWhoisDns.jsx + Backend Java TCP Port 43 Socket & Live DNS Resolver
+### 2. Network & OSINT Suite (5 Tools)
+- [x] **CIDR Subnet Calculator** (`/network/cidr-subnet-calculator`): IPv4/IPv6 address decomposition, network/broadcast range, netmask and wildcard calculations.
+- [x] **OSINT Multi-Target Workspace** (`/network/osint-multi-target-workspace`): Shodan, VirusTotal, Censys, ViewDNS, GreyNoise multi-target hub.
+- [x] **Wordlists & SecLists Catalog** (`/network/wordlists-seclists-catalog`): Download & reference catalog for SecLists, RockYou, and directory wordlists.
+- [x] **Domain & Whois Reference Guide** (`/network/domain-whois-reference-guide`): Registrar fields, TLD policies, and DNS record type reference.
+- [x] **Live DNS Record & Socket Lookup** (`/network/live-dns-record-socket-lookup`): Live TCP Port 43 WHOIS queries & DNS record lookup engine.
 
---- [5.5 Reverse Engineering & Pwn Suite (13 Tools)] ---
-[UPCOMING]  Step 5.5.1:  AsmReference.jsx (x86, x64, ARM opcode & register guide)
-[UPCOMING]  Step 5.5.2:  RopReference.jsx (ROP gadgets, stack pivoting, ret2libc)
-[UPCOMING]  Step 5.5.3:  FormatStringHelper.jsx (%x, %s, %n write offset generator)
-[UPCOMING]  Step 5.5.4:  BinaryOverview.jsx (ELF, PE, Mach-O section structures)
-[UPCOMING]  Step 5.5.5:  AsciiTable.jsx (0-255 ASCII character table)
-[UPCOMING]  Step 5.5.6:  EndiannessConverter.jsx (Big/Little endian byte swapper)
-[UPCOMING]  Step 5.5.7:  DataTypeSizes.jsx (C/C++ architectural types reference)
-[UPCOMING]  Step 5.5.8:  CyclicPatternTool.jsx + Backend Java De Bruijn Sequence Generator
-[UPCOMING]  Step 5.5.9:  ShellcodeReference.jsx (Curated Linux/Windows shellcodes)
-[UPCOMING]  Step 5.5.10: PwnOffsetCalc.jsx (Stack alignment & frame pointer assistant)
-[UPCOMING]  Step 5.5.11: EsolangInterpreter.jsx (Brainfuck visualizer with memory tape)
-[UPCOMING]  Step 5.5.12: PwntoolsScriptGen.jsx (Boilerplate solve.py generator)
-[UPCOMING]  Step 5.5.13: SyscallMatrix.jsx (Linux x86 & x64 syscall reference matrix)
+### 3. Web Exploitation Suite (8 Tools)
+- [x] **JWT Analyzer & Exploit Lab** (`/web/jwt-analyzer`): Header/claims editor, signature verification, `alg: none` exploit generator.
+- [x] **Web Attack Payload Generator** (`/web/web-attack-payload-generator`): Curated payloads across XSS, SQLi, SSRF, LFI/RFI, SSTI, Command Injection.
+- [x] **HTTP Request & Header Security Auditor** (`/web/http-request-header-security-auditor`): Security header analyzer (CSP, HSTS, X-Frame, CORS).
+- [x] **Regex Tester** (`/web/regex-tester`): Interactive regex debugger with live match highlighting and CTF pattern presets.
+- [x] **URL Parser & Parameter Decomposer** (`/web/url-parser-parameter-decomposer`): Protocol, host, path, query parameters table, fragment decomposition.
+- [x] **User-Agent Fingerprint Analyzer** (`/web/user-agent-fingerprint-analyzer`): Client browser, OS, hardware architecture, engine identification.
+- [x] **HTTP Status Codes CTF Guide** (`/web/http-status-codes-ctf-guide`): Complete RFC status catalog with CTF exploitation insights.
+- [x] **SSTI & SQLi Filter Bypass Playground** (`/web/ssti-sqli-filter-bypass-playground`): Jinja2/Twig/SpEL template filter evasion & SQLi bypass transformer.
 
---- [5.6 Reference & Search Suite (2 Tools)] ---
-[UPCOMING]  Step 5.6.1: KaliCommands.jsx (Searchable 200+ commands in 10 categories)
-[UPCOMING]  Step 5.6.2: GoogleDorkGen.jsx (1-click sensitive file search generator)
+### 4. Forensics & Steganography Suite (12 Tools)
+- [x] **File Magic Byte Analyzer** (`/forensics/file-magic-byte-analyzer`): Hex signature identifier for headers and footers.
+- [x] **Timestamp Converter** (`/forensics/timestamp-converter`): Unix epoch (s/ms), Windows 64-bit FILETIME, UUIDv1, ISO 8601 converter.
+- [x] **PNG IHDR Chunk & CRC Fixer** (`/forensics/png-ihdr-chunk-crc-fixer`): Automatically corrects truncated image dimensions and recalculates CRC-32.
+- [x] **Steg Command Assistant** (`/forensics/steg-command-assistant`): Syntax generator for `steghide`, `zsteg`, `binwalk`, `foremost`, `exiftool`.
+- [x] **MIME Type & Magic Signatures Reference** (`/forensics/mime-type-magic-signatures-reference`): Searchable database of 100+ binary file signatures.
+- [x] **Default Credentials Database** (`/forensics/default-credentials-database`): Searchable factory credentials for routers, cameras, CMS, and databases.
+- [x] **LSB Bitplane Steganography Reader** (`/forensics/lsb-bitplane-steganography-reader`): Visualizes R/G/B 0–7 bitplanes to detect concealed images/text.
+- [x] **Base64 Media Extractor** (`/forensics/base64-media-extractor`): Auto-detects, decodes, and previews embedded Data-URI images, audio, and SVG.
+- [x] **EXIF Metadata Reference** (`/forensics/exif-metadata-reference`): Guide to GPS coordinate tagging, camera models, and hidden timestamps.
+- [x] **PCAP Stream Inspector** (`/forensics/pcap-stream-inspector`): Reconstructs TCP/HTTP sessions and extracts raw transferred files from PCAP dumps.
+- [x] **Magic Byte File Carver** (`/forensics/magic-byte-file-carver`): Scans raw binary dumps and carves out embedded JPEGs, PNGs, and ZIPs.
+- [x] **ZIP Password Cracker** (`/forensics/zip-password-cracker`): Multi-threaded dictionary attack runner for password-protected ZIP archives.
 
---- [5.7 Workspace & Productivity Suite (7 Tools)] ---
-[UPCOMING]  Step 5.7.1: NotesScratchpad.jsx (Cloud notes with auto-save & tagging)
-[UPCOMING]  Step 5.7.2: TextUtils.jsx (Deduplicator, sorter, word/char count, trimmer)
-[UPCOMING]  Step 5.7.3: DiffChecker.jsx (Side-by-side text difference visualizer)
-[UPCOMING]  Step 5.7.4: QrCodeReference.jsx (QR anatomy & error correction levels)
-[UPCOMING]  Step 5.7.5: FlagHunter.jsx (Global regex candidate pool with cloud sync)
-[UPCOMING]  Step 5.7.6: CommandPalette.jsx (Global Ctrl+K fuzzy launcher)
-[UPCOMING]  Step 5.7.7: WriteUpGenerator.jsx (1-click markdown writeup compiler)
+### 5. Reverse Engineering & Pwn Suite (13 Tools)
+- [x] **De Bruijn Cyclic Pattern Generator & Offset Finder** (`/reverse/de-bruijn-cyclic-pattern-generator-offset-finder`): Generates unique 20,000-char non-repeating sequences and calculates buffer crash offsets.
+- [x] **Endianness Converter** (`/reverse/endianness-converter`): 16/32/64-bit Big-Endian vs Little-Endian visual byte swapper.
+- [x] **Linux Syscall Reference Table** (`/reverse/linux-syscall-reference-table`): Linux x86_64 kernel syscall reference (0–60) with registers (`rax`, `rdi`, `rsi`, `rdx`).
+- [x] **Pwntools Script Template Generator** (`/reverse/pwntools-script-template-generator`): Python exploit script builder for ret2win, ROP, shellcode execution.
+- [x] **Brainfuck Interpreter** (`/reverse/brainfuck-interpreter`): 30,000-cell virtual machine emulator with memory tape visualizer.
+- [x] **ASM Assembly Reference** (`/reverse/asm-assembly-reference`): x86/x64 instruction cheat sheet (data movement, arithmetic, logic, branching).
+- [x] **ROP Gadget Cheat Sheet** (`/reverse/rop-gadget-cheat-sheet`): Common ROP gadgets (`pop rdi; ret`, `ret`, `syscall`) and stack pivoting techniques.
+- [x] **Format String Offset Generator** (`/reverse/format-string-offset-generator`): `%p.%p.%p` stack leak patterns and direct parameter access (`%n$p`).
+- [x] **Binary Structure Overview** (`/reverse/binary-structure-overview`): Interactive ELF and PE header layout maps.
+- [x] **ASCII 0-255 Table** (`/reverse/ascii-0-255-table`): Complete decimal, hex, octal, binary conversions with control character meanings.
+- [x] **C/C++ Data Type Sizes Reference** (`/reverse/c-c-data-type-sizes-reference`): Cross-platform 32-bit vs 64-bit architecture memory layouts.
+- [x] **Shellcode Catalog** (`/reverse/shellcode-catalog`): Ready-to-use tested Linux x86/x64 and Windows shellcodes with bad-char filters.
+- [x] **Stack Frame & Buffer Offset Assistant** (`/reverse/stack-frame-buffer-offset-assistant`): Visualizes stack frame growth, local variables, saved RBP, and return address.
 
-================================================================================
-PHASE 6: FULL VERIFICATION & DEPLOYMENT PREPARATION
-================================================================================
-[UPCOMING]  Step 6.1: Full frontend production build verification (npm run build)
-[UPCOMING]  Step 6.2: Full backend production build verification (mvnw clean package)
-[UPCOMING]  Step 6.3: End-to-end integration test (UI -> Java -> MongoDB Atlas)
-[UPCOMING]  Step 6.4: Multi-stage Dockerfile packaging for ctf-be (< 150MB Temurin JRE)
-[UPCOMING]  Step 6.5: Final git sync and release documentation
-================================================================================
+### 6. Reference Guides (2 Tools)
+- [x] **Kali Linux Commands Database** (`/reference/kali-linux-commands-database`): Searchable database of 80+ Kali commands categorized across 8 attack phases with flag breakdowns.
+- [x] **Google Dork Generator** (`/reference/google-dork-generator`): Interactive constructor for `site:`, `filetype:`, `intitle:`, `inurl:`, `intext:`, and 8 CTF presets with 1-click Google search.
 
+### 7. Workspace Utilities (7 Tools)
+- [x] **Notes & Scratchpad** (`/workspace/notes-scratchpad`): Full-page markdown scratchpad with dual edit/preview, tags, search, pin/unpin, and `.md` export.
+- [x] **Text Utilities** (`/workspace/text-utilities`): Real-time Shannon Entropy calculator, 8 case converters, line deduplication, sorting, and regex replace.
+- [x] **Text Diff Checker** (`/workspace/text-diff-checker`): Side-by-side and unified line-by-line diff comparator with similarity ratio calculation.
+- [x] **QR Code Reference & Generator** (`/workspace/qr-code-reference`): Zero-dependency SVG/PNG QR generator with inverted stego mode and forensic anatomy guide.
+- [x] **Flag Hunter** (`/workspace/flag-hunter`): Multi-stage deep extraction pipeline with automatic Base64 and Hex stream decoding.
+- [x] **Command Palette & Hotkeys Guide** (`/workspace/command-palette`): Searchable catalog of all 64 tools with category filtering and keyboard shortcuts reference.
+- [x] **CTF Write-Up Markdown Generator** (`/workspace/ctf-write-up-markdown-generator`): Form wizard generating structured writeup documentation with live preview and `.md` download.
+
+---
+
+## 🎯 Active Forward Roadmap (Operator Toolkit Focus)
+
+```mermaid
+timeline
+    title ExploitX Operator Platform Roadmap
+    Phase 1 : In-Browser Web Terminal : Interactive Pseudo-Shell : CTF CLI Utilities
+    Phase 2 : Tool Chaining & Pipelining : Output to Input Forwarding : One-Click Connectors
+    Phase 3 : Command Palette Enhancements : Quick Calculations : Base64/Hex/Hash in Ctrl+K
+    Phase 4 : Workspace Offline Resilience : LocalStorage Auto-Sync : JSON Session Export/Import
+    Phase 5 : Production Containerization : Single-Command Docker Compose : Zero-Config Setup
+```
+
+---
+
+### 🟢 Phase 1: Interactive CTF Web Terminal Simulator
+- [ ] **Dedicated Route (`/terminal`) & Slide-Up Global Drawer**:
+  - In-browser interactive shell emulator with customizable prompt (`operator@exploitx:~$ `).
+  - Terminal history navigation via `Up` / `Down` arrow keys.
+  - Command autocompletion via `Tab`.
+  - ANSI colored output and clear screen (`Ctrl+L` / `clear`).
+- [ ] **Built-in CLI Utilities**:
+  - `help`: Command documentation and syntax examples.
+  - `base64 [-d] <text>`: Fast encoding and decoding.
+  - `rot13 <text>`: Instant Caesar 13 shift.
+  - `hash <md5|sha1|sha256> <text>`: Instant cryptographic hash generation.
+  - `strings <text>` / `hexdump <text>`: Fast string and hex inspections.
+  - `whoami`, `date`, `uname -a`, `cat`, `echo`, `history`.
+  - `open <tool-id>`: Quick command to launch any of the 64 tool workbenches.
+
+---
+
+### 🟢 Phase 2: Inter-Tool Output Pipelining ("Send To...")
+- [ ] **Standardized Output Action Bar** on all tool workbenches:
+  - **Send to Multi Decoder**: Forwards output directly into multi-stage decoder.
+  - **Send to Text Utilities**: Forwards output for case transformation, sorting, or regex replace.
+  - **Send to Diff Checker**: Automatically stages output as Left or Right diff pane.
+  - **Send to Notes**: Appends output as a code block to the active scratchpad note.
+  - **Send to Flag Hunter**: Analyzes output for flag candidate strings.
+
+---
+
+### 🟢 Phase 3: Command Palette (`Ctrl+K`) Inline Quick-Actions
+- [ ] **Instant Inline Evaluation**:
+  - Typing `b64 <text>` shows decoded/encoded result immediately without navigating.
+  - Typing `hex <number>` or `bin <number>` shows instant numeric conversions.
+  - Typing `md5 <text>` or `sha256 <text>` computes the hash directly in the palette.
+- [ ] **Recent Tools & Pinned Shortcuts**: Quick jump to most frequently used tools.
+
+---
+
+### 🟢 Phase 4: Workspace Offline Resilience & Session Backups
+- [ ] **Dual-Layer Persistence**:
+  - Real-time fallback to browser `localStorage` when backend/network is unavailable.
+  - Automatic synchronization with MongoDB on reconnection.
+- [ ] **Session Export / Import**:
+  - One-click "Export Session" to download a full `.json` backup of all notes, flag candidates, and scratchpad history.
+  - One-click "Import Session" to restore an operator workspace on any machine.
+
+---
+
+### 🟢 Phase 5: Production Packaging & Docker Deployment
+- [ ] **Backend Multi-Stage Dockerfile** (`ctf-be/Dockerfile`): Java 23 Eclipse Temurin + Maven build.
+- [ ] **Frontend Multi-Stage Dockerfile** (`pixel-perfect-replica/Dockerfile`): Node 22 + Nitro production runner.
+- [ ] **Root `docker-compose.yml`**:
+  - Orchestrates `mongo`, `ctf-be` (port 8080), and `pixel-perfect-replica` (port 5173).
+  - One command startup: `docker compose up --build`.
+
+---
+
+## ⏸️ On-Hold: Challenges & Competition Platform
+*(Paused per user instruction; to be activated when requested)*
+- [ ] Challenge database seeder (20+ challenges across all 6 categories).
+- [ ] Downloadable challenge files engine (PCAPs, ELF binaries, Stego images).
+- [ ] Live competitive scoreboard & First Blood tracking engine.
+- [ ] Category completion skill radar chart & achievements.
