@@ -1,7 +1,7 @@
 # 🚀 ExploitX CTF Platform — Master Implementation Roadmap
 
 > **Current Status**: All **64 / 64 Tools** across 7 domains are **100% completed and verified** with dedicated custom screens and backend engine tests.  
-> **Active Focus**: Operator Platform, Web Terminal Simulator, Inter-Tool Pipelining, and Workspace Resilience.  
+> **Immediate Focus**: Enterprise Multi-Layer Authentication, Dual-Tokens (JWT + Session), Google OAuth2 Sign-In, and Introduction Landing Page.  
 > **On-Hold Status**: Challenges & Competitive Scoring side is temporarily paused per user decision.
 
 ---
@@ -103,21 +103,49 @@
 
 ---
 
-## 🎯 Active Forward Roadmap (Operator Toolkit Focus)
+## 🎯 Active Forward Roadmap (Operator & Platform Focus)
 
 ```mermaid
 timeline
-    title ExploitX Operator Platform Roadmap
-    Phase 1 : In-Browser Web Terminal : Interactive Pseudo-Shell : CTF CLI Utilities
-    Phase 2 : Tool Chaining & Pipelining : Output to Input Forwarding : One-Click Connectors
-    Phase 3 : Command Palette Enhancements : Quick Calculations : Base64/Hex/Hash in Ctrl+K
-    Phase 4 : Workspace Offline Resilience : LocalStorage Auto-Sync : JSON Session Export/Import
-    Phase 5 : Production Containerization : Single-Command Docker Compose : Zero-Config Setup
+    title ExploitX Platform Forward Roadmap
+    Phase 1 : Auth & Landing Page : Introduction Landing Page : Multi-Layer Encryption : Dual-Tokens : Google OAuth
+    Phase 2 : In-Browser Web Terminal : Interactive Pseudo-Shell : CTF CLI Utilities
+    Phase 3 : Tool Chaining & Pipelining : Output to Input Forwarding : One-Click Connectors
+    Phase 4 : Command Palette Enhancements : Quick Calculations : Base64/Hex/Hash in Ctrl+K
+    Phase 5 : Workspace Offline Resilience : LocalStorage Auto-Sync : JSON Session Export/Import
+    Phase 6 : Production Containerization : Single-Command Docker Compose : Zero-Config Setup
 ```
 
 ---
 
-### 🟢 Phase 1: Interactive CTF Web Terminal Simulator
+### 🟢 Phase 1: Enterprise Multi-Layer Authentication, Dual-Tokens, Google OAuth & Introduction Landing Page (CURRENT PRIORITY)
+
+- [ ] **1.1 Website Introduction Landing Page (`/`)**:
+  - High-impact cyber-themed homepage introducing ExploitX to new visitors.
+  - Value proposition headline, live tool statistics (64 tools across 7 disciplines).
+  - Core Pillars Showcase: 64 Focused Security Tools, Real-Time Operator Workspace, In-Browser Web Terminal, Hardened Security.
+  - Interactive Live Tool Spotlight (instant mini-decoder demonstration widget).
+  - Call-To-Action (CTA) funnels: "Explore Public Tools as Guest", "Create Operator Account", "Sign In with Google".
+  - Routing: Unauthenticated visitors see the Landing Page; authenticated operators transition to the active Dashboard.
+- [ ] **1.2 Multi-Layer Database Password Encryption**:
+  - Implement `MultiLayerPasswordEncoder` in Spring Boot:
+    - **Layer 1**: Server-side HMAC-SHA512 cryptographic pepper key (`app.security.pepper`).
+    - **Layer 2**: Adaptive high-cost BCrypt (cost factor 12) on top of the peppered password.
+  - Protects user passwords from database leaks and GPU rainbow-table clusters.
+- [ ] **1.3 Dual-Token Strategy (JWT + Session Tokens)**:
+  - **Stateless JWT Access Token**: Short-lived (15–60 min) for performant REST API authorization.
+  - **Persistent `UserSession` Document**: Stored in MongoDB for 30-day "Remember this device" sessions.
+  - Endpoint `POST /api/auth/refresh`: Silently exchange valid session token for fresh JWT.
+  - Remote Session Management: Endpoint `GET /api/auth/sessions` and `POST /api/auth/logout` to revoke individual or all active devices.
+- [ ] **1.4 Google OAuth2 Sign-In Integration**:
+  - Branded Google Sign-In button on both `/login` and `/register` pages.
+  - Backend endpoint `POST /api/auth/google`: Verifies Google ID token, provisions or links user account, and issues dual tokens.
+- [ ] **1.5 Frontend Operator State & Silent Refresh Interceptor**:
+  - Update `operator.tsx` and `api.ts` to persist both tokens and auto-refresh on 401 Unauthorized before retrying API calls.
+
+---
+
+### 🟢 Phase 2: Interactive CTF Web Terminal Simulator
 - [ ] **Dedicated Route (`/terminal`) & Slide-Up Global Drawer**:
   - In-browser interactive shell emulator with customizable prompt (`operator@exploitx:~$ `).
   - Terminal history navigation via `Up` / `Down` arrow keys.
@@ -134,7 +162,7 @@ timeline
 
 ---
 
-### 🟢 Phase 2: Inter-Tool Output Pipelining ("Send To...")
+### 🟢 Phase 3: Inter-Tool Output Pipelining ("Send To...")
 - [ ] **Standardized Output Action Bar** on all tool workbenches:
   - **Send to Multi Decoder**: Forwards output directly into multi-stage decoder.
   - **Send to Text Utilities**: Forwards output for case transformation, sorting, or regex replace.
@@ -144,7 +172,7 @@ timeline
 
 ---
 
-### 🟢 Phase 3: Command Palette (`Ctrl+K`) Inline Quick-Actions
+### 🟢 Phase 4: Command Palette (`Ctrl+K`) Inline Quick-Actions
 - [ ] **Instant Inline Evaluation**:
   - Typing `b64 <text>` shows decoded/encoded result immediately without navigating.
   - Typing `hex <number>` or `bin <number>` shows instant numeric conversions.
@@ -153,7 +181,7 @@ timeline
 
 ---
 
-### 🟢 Phase 4: Workspace Offline Resilience & Session Backups
+### 🟢 Phase 5: Workspace Offline Resilience & Session Backups
 - [ ] **Dual-Layer Persistence**:
   - Real-time fallback to browser `localStorage` when backend/network is unavailable.
   - Automatic synchronization with MongoDB on reconnection.
@@ -163,7 +191,7 @@ timeline
 
 ---
 
-### 🟢 Phase 5: Production Packaging & Docker Deployment
+### 🟢 Phase 6: Production Packaging & Docker Deployment
 - [ ] **Backend Multi-Stage Dockerfile** (`ctf-be/Dockerfile`): Java 23 Eclipse Temurin + Maven build.
 - [ ] **Frontend Multi-Stage Dockerfile** (`pixel-perfect-replica/Dockerfile`): Node 22 + Nitro production runner.
 - [ ] **Root `docker-compose.yml`**:
