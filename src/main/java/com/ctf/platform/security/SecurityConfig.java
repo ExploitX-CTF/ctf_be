@@ -28,14 +28,13 @@ import java.util.List;
 public class SecurityConfig {
 
     private final JwtAuthFilter jwtAuthFilter;
-    private final MultiLayerPasswordEncoder multiLayerPasswordEncoder;
 
     @Value("${app.cors.allowed-origins:http://localhost:5173}")
     private String allowedOrigins;
 
     @Bean
     public PasswordEncoder passwordEncoder() {
-        return multiLayerPasswordEncoder;
+        return new BCryptPasswordEncoder();
     }
 
     @Bean
