@@ -44,6 +44,9 @@ public class AuthService {
         if (userRepository.existsByEmail(email)) {
             throw new RuntimeException("Email already in use");
         }
+        if (request.getPassword() == null || request.getPassword().length() < 8) {
+            throw new RuntimeException("Password must be at least 8 characters long");
+        }
 
         User user = User.builder()
                 .username(username)
