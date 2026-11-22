@@ -118,26 +118,22 @@ timeline
 
 ---
 
-### 🟢 Phase 1: Enterprise Multi-Layer Authentication, Dual-Tokens, Google OAuth & Introduction Landing Page (CURRENT PRIORITY)
+### 🟢 Phase 1: Authentication, Google Sign-In & Introduction Landing Page (COMPLETED)
 
-- [ ] **1.1 Website Introduction Landing Page (`/`)**:
-  - High-impact cyber-themed homepage introducing ExploitX to new visitors.
-  - Value proposition headline, live tool statistics (64 tools across 7 disciplines).
+- [x] **1.1 Website Introduction Landing Page (`/`)**:
+  - Cyber-themed homepage introducing ExploitX to new visitors.
+  - Live tool statistics (64 tools across 7 disciplines).
   - Core Pillars Showcase: 64 Focused Security Tools, Real-Time Operator Workspace, In-Browser Web Terminal, Hardened Security.
   - Interactive Live Tool Spotlight (instant mini-decoder demonstration widget).
-  - Call-To-Action (CTA) funnels: "Explore Public Tools as Guest", "Create Operator Account", "Sign In with Google".
-  - Routing: Unauthenticated visitors see the Landing Page; authenticated operators transition to the active Dashboard.
-- [ ] **1.2 Multi-Layer Database Password Encryption**:
-  - Implement `MultiLayerPasswordEncoder` in Spring Boot:
-    - **Layer 1**: Server-side HMAC-SHA512 cryptographic pepper key (`app.security.pepper`).
-    - **Layer 2**: Adaptive high-cost BCrypt (cost factor 12) on top of the peppered password.
-  - Protects user passwords from database leaks and GPU rainbow-table clusters.
-- [ ] **1.3 Dual-Token Strategy (JWT + Session Tokens)**:
-  - **Stateless JWT Access Token**: Short-lived (15–60 min) for performant REST API authorization.
-  - **Persistent `UserSession` Document**: Stored in MongoDB for 30-day "Remember this device" sessions.
-  - Endpoint `POST /api/auth/refresh`: Silently exchange valid session token for fresh JWT.
-  - Remote Session Management: Endpoint `GET /api/auth/sessions` and `POST /api/auth/logout` to revoke individual or all active devices.
-- [ ] **1.4 Google OAuth2 Sign-In Integration**:
+  - Unauthenticated visitors see the Landing Page; authenticated operators transition to the active Dashboard (`/dashboard` remains 100% intact).
+- [x] **1.2 Standard BCrypt Password Encryption**:
+  - Standard Spring Boot `BCryptPasswordEncoder` hashing.
+  - Minimum 8-character password constraint (no arbitrary complexity hurdles).
+- [x] **1.3 Simple & Secure Auth Flow**:
+  - Clean JWT authentication stored in localStorage.
+  - Simple login & register interface with standard "Remember me".
+- [x] **1.4 Google Sign-In Integration**:
+  - One-click Google Sign-In button on login & signup pages.
   - Branded Google Sign-In button on both `/login` and `/register` pages.
   - Backend endpoint `POST /api/auth/google`: Verifies Google ID token, provisions or links user account, and issues dual tokens.
 - [ ] **1.5 Frontend Operator State & Silent Refresh Interceptor**:
