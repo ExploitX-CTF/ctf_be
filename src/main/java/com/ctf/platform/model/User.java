@@ -32,6 +32,13 @@ public class User {
 
     private String password;
 
+    private String googleId;
+
+    private String avatarUrl;
+
+    @Builder.Default
+    private String authProvider = "LOCAL";
+
     @Builder.Default
     private Set<String> roles = new HashSet<>();
 
